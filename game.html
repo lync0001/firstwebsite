@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  <title>Techniek</title>
+</head>
+<body>
+  <header>
+    <h1>Steen papier schaar...</h1>
+  </header>
+  <ul id="navbar">
+    <li><a id="navlink"href="index.html">Home</a></li>
+    <li><a id="navlink"href="CV.html">Curriculum Vitae</a></li>
+    <li><a id="navlink"id="navlink"href="Motivatie.html">Motivatie</a></li>
+    <li><a id="navlink"href="game.html">Game</a></li>
+    <li><a id="navlink"href="Techniek.html">Techniek</a></li>
+    <li><a id="navlink"href="sitemap.html">Sitemap</a></li>
+  </ul>
+  <div id="vak1">
+
+    <div id="game">
+    <div id="userSelection">
+        <h1 style="font-family: Futura;">Maak een keuze.</h1>
+
+        <table class="Game-table" >
+            <tbody>
+                <tr>
+                 <td class="selection" id="stone">
+                    <img src="rock.png" alt="Rock" onclick="playWith('stone')"/></td>
+
+                 <td class="selection" id="paper">
+                    <img src="paper.png" alt="Paper" onclick="playWith('paper')"/></td>
+
+                 <td class="selection" id="scissor">
+                    <img src="scissors.png" alt="Scissors" onclick="playWith('scissor')"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="result"></div>
+  </div>
+</div>
+
+    <script>
+    var userChoice = undefined;
+
+   function playWith(option){
+
+       if (userChoice != undefined)
+       {
+           userSelectionElement = document.getElementById(userChoice);
+
+           userSelectionElement.style.border = "5px #3B0101  solid";
+       }
+
+       userChoice = option;
+       userSelectionElement = document.getElementById(option);
+       userSelectionElement.style.border = "5px #1C1C1C solid";
+       var computerChoice = Math.random();
+       if (computerChoice <0.34){
+           computerChoice = "stone";
+       }else if(computerChoice <=0.67){
+           computerChoice = "paper";
+       }else{
+           computerChoice = "scissor";
+       }
+
+       resultMessage = compare(userChoice, computerChoice);
+
+       document.getElementById("result").innerHTML ="<p>User select:" + userChoice + " - Computer select:"
+               + computerChoice + "</p> <p>" + resultMessage + "</p>";
+   }
+
+   function compare(userSelection, computerSelection)
+   {
+       if(userSelection == undefined)
+       {
+           return "Maak alstublieft een keuzen voordat u begint met spelen."
+       }
+
+       if (userSelection == computerSelection)
+       {
+           return "Het is gelijkspel!";
+       }
+
+       if (userSelection == "stone")
+       {
+           if (computerSelection == "scissor")
+           {
+               return "Je hebt gewonnen!";
+           } else {
+               return "De computer heeft gewonnen, probeer het nog eens.";
+           }
+
+       } else if (userSelection == "paper") {
+
+           if (computerSelection == "stone")
+           {
+               return "Je hebt gewonnen!" ;
+           } else if("scissor") {
+               return "De computer heeft gewonnen, probeer het nog eens." ;
+           }
+
+       } else if (userSelection == "scissor") {
+
+           if (computerSelection == "stone")
+           {
+               return "De computer heeft gewonnen, probeer het nog eens.";
+           }else{
+               return "Je hebt gewonnen!";
+           }
+       }
+   }
+    </script>
+
+
+</body>
+</html>
